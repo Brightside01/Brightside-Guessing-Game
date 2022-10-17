@@ -7,12 +7,16 @@ const guessdiv = document.getElementById("guessdiv");
 
 let playing = true;
 
+// VARIABLE FOR NUMBER OF GUESSES
 let NumberOfGuessing = 5;
 
-const randomNumber = Math.floor(Math.random() * 50) + 1;
+// GETTING THE RANDOM NUMBER
+let randomNumber = 0
+randomNumber = Math.floor(Math.random() * 50) + 1;
 
-console.log(randomNumber);
+// console.log(randomNumber);
 
+// CONDITIONS FOR THE GAME
 const conditions = (userNumber) => {
 
   if (randomNumber === userNumber) {
@@ -36,6 +40,7 @@ const conditions = (userNumber) => {
   }
 };
 
+// SUBMIT BUTTON FUNCTION
 submitBtn.onclick = () => {
   let userNumber = Number(inputNumber.value);
 
@@ -47,14 +52,15 @@ submitBtn.onclick = () => {
 
   guess.innerHTML = `You have ${NumberOfGuessing} guesses`;
 
-  if (NumberOfGuessing < 1) {
+  if (NumberOfGuessing < 1 && playing === true) {
     guess.innerHTML = `You have no more guesses`;
     playing = false;
-    result.innerHTML = `<p class = 'right'>You guessed wrong. The right anwser is ${randomNumber}</p>`;
+    result.innerHTML = `<p class = 'right'>You guessed wrong. The right answer is ${randomNumber}</p>`;
     guessdiv.innerHTML = `<p class = 'wrong'>Click on the restart button</p>`;
   }
 };
 
+// RESTART BUTTON FUNCTION 
 restart.onclick = () => {
   NumberOfGuessing = 5;
   playing = true;
@@ -62,4 +68,5 @@ restart.onclick = () => {
   guess.innerHTML = `You have ${NumberOfGuessing} guesses`;
   guessdiv.innerHTML = "";
   randomNumber = Math.floor(Math.random() * 50) + 1;
+  // console.log(randomNumber)
 };
